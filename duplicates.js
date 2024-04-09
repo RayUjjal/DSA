@@ -33,28 +33,22 @@ Constraints:
 */
 
 function duplicates(a, n) {
-    //your code here
-
-    let duplicates_vals = [];
-
-    //selection sort
-    for (let i = 0; i < n; i++) {
-        for(let j=i;j<n;j++){
-            if(a[i]>a[j]){
-                let temp=a[i];
-                a[i]=a[j];
-                a[j]=temp;
-            }
+    // Use a set to store duplicate values
+    let duplicatesSet = new Set();
+    
+    // Sort the array in non-decreasing order
+    a.sort((x, y) => x - y);
+    
+    // Traverse the array and find duplicates
+    for (let i = 0; i < n - 1; i++) {
+        if (a[i] == a[i + 1]) {
+            duplicatesSet.add(a[i]);
         }
     }
-
-    for (let j = 0; j < n - 1; j++) {
-        if (a[j] == a[j + 1] && duplicates_vals[duplicates_vals.length-1]!=a[j]) {
-            duplicates_vals.push(a[j]);
-        }
-    }
-    return duplicates_vals.length > 0 ? duplicates_vals : [-1];
-
+    
+    // Convert set to array and return
+    let duplicatesArr = Array.from(duplicatesSet);
+    return duplicatesArr.length > 0 ? duplicatesArr : [-1];
 }
 
 

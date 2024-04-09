@@ -1,13 +1,12 @@
-function mergeSort(array,begin) {
-    end = array.length;
-    if (end <= 1) {
-        return array;
+function mergeSort(arr,n) {
+    if(n<=1){
+        return arr;
     }
 
-    let mid = begin + (end - begin) / 2;
-    mergeSort(array, begin, mid);
-    mergeSort(array, mid + 1, end);
-    merge(array, begin, mid, end);
+    let mid=Math.floor(arr.length/2);
+    let leftarr=mergeSort(arr.slice(0,mid), arr.slice(0,mid).length);
+    let rightarr=mergeSort(arr.slice(mid), arr.slice(mid).length);
+    return merge(leftarr,rightarr);
 }
 
 function merge(left, right) {
@@ -24,9 +23,9 @@ function merge(left, right) {
             r_index++;
         }
     }
-    return result;
+    return result.concat(left.slice(l_index),right.slice(r_index));
 }
 
 
 const arr = [3, 4, 12, 3, 12, 3, 4, 4, 12, 7, 11, 6, 5]
-console.log(mergeSort(arr));
+console.log(mergeSort(arr,arr.length));
