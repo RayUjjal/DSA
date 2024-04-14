@@ -34,18 +34,21 @@ class LinkList {
             else {
                 let lastNode = this.lastnode(pos);
                 newNode.next = lastNode.Node;
-                lastNode.prevNode.next = newNode;
+                // lastNode.prevNode.next = newNode;
             }
         }
         this.length++;
     }
 
     delete(pos = this.length) {
-        this.length--;
         let currentNode = this.head;
         let prev = null;
+        console.log(this.length);
         if (pos - 1 == 0) {
             this.head = currentNode.next;
+            return;
+        }
+        else if(pos>this.length){
             return;
         }
         for (let i = 0; i < pos; i++) {
@@ -57,6 +60,7 @@ class LinkList {
                 currentNode = currentNode.next;
             }
         }
+        
     }
 
     print(pos = this.length) {
@@ -106,4 +110,6 @@ llist.print();
 llist.append("ujjal", 1);
 llist.print();
 llist.append("ujjal22", 1);
+llist.print();
+llist.delete(5);
 llist.print();
