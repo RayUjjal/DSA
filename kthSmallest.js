@@ -17,6 +17,10 @@ function kthSmallest(arr, l, r, k) {
     return arr[k-1];
 }
 
-let input =[7,10,4,3,20,15];
-let l=0,r=5,k=3;
-console.log(kthSmallest(input, l, r, k));
+function kthSmallest2(arr, l, r, k){
+    arr=arr.sort((a,b)=>a-b);
+    return arr[k-1];
+}
+let input =[7,10,4,20,15];
+let l=0,r=5,k=4;
+console.log(kthSmallest2(input, l, r, k));

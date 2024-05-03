@@ -33,6 +33,36 @@ class LinkList {
 
     }
 
+    deleteK(head, k) {
+        //code here
+        let currentNode = head;
+        let prev = null;
+        if (k - 1 == 0) {
+            this.head = currentNode.next;
+            return;
+        }
+        let i = 1;
+        while (currentNode !== null) {
+            if (i % k == 0) {
+                console.log("removing::" + currentNode.data);
+                prev.next = currentNode.next;
+            }
+            else {
+                prev = currentNode;
+                currentNode = currentNode.next;
+            }
+            console.log("-------------");
+            console.log("(i + 1) * n - 1::" + ((i) * k));
+            i++;
+            console.log("i::" + i);
+            this.printlist(head);
+            console.log("currentNode::" + JSON.stringify(currentNode));
+
+        }
+
+        return head;
+    }
+
     printlist(head) {
         let current = head;
         let s = '';
@@ -46,16 +76,23 @@ class LinkList {
 
 let head = null;
 let llist = new LinkList();
-let input_ar1 = [9, 0, 5, 1, 6, 1, 2, 0, 5, 0];
-let n = 5;
-for (let i = 0; i < 2 * n; i += 2) {
-    if (input_ar1[i + 1] === 1) {
-        head = llist.insertAtEnd(head, input_ar1[i]);
-    }
-    else {
-        head = llist.insertAtBegining(head, input_ar1[i]);
-    }
+let input_ar1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let n = input_ar1.length;
+// for (let i = 0; i < 2 * n; i += 2) {
+//     if (input_ar1[i + 1] === 1) {
+//         head = llist.insertAtEnd(head, input_ar1[i]);
+//     }
+//     else {
+//         head = llist.insertAtBegining(head, input_ar1[i]);
+//     }
+// }
+for (let i = 0; i < n; i++) {
+    head = llist.insertAtEnd(head, input_ar1[i]);
 }
+// llist.printlist(head);
+// console.log("-------------");
+head = llist.deleteK(head, 3);
+// console.log("-------------");
 llist.printlist(head);
 
 /*

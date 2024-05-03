@@ -59,8 +59,7 @@ class LinkList {
                 prev = currentNode;
                 currentNode = currentNode.next;
             }
-        }
-        
+        }  
     }
 
     print(pos = this.length) {
